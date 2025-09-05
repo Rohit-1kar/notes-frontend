@@ -14,6 +14,13 @@ export default function NotesList({ notes, updateNote, deleteNote }) {
     setEditingId(null);
   };
 
+  const shareNoteWhatsApp = (note) => {
+    const text = `📝 Check out this note:\nSubject: ${note.subject}\nDescription: ${note.description}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, "_blank");
+  };
+
   return (
     <div>
       {notes.length === 0 && (
@@ -75,6 +82,12 @@ export default function NotesList({ notes, updateNote, deleteNote }) {
                     onClick={() => deleteNote(note.id)}
                   >
                     Delete
+                  </button>
+                  <button
+                    className="btn btn-success btn-sm"
+                    onClick={() => shareNoteWhatsApp(note)}
+                  >
+                    Share on WhatsApp
                   </button>
                 </div>
               </>
