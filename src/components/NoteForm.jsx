@@ -7,6 +7,10 @@ export default function NoteForm({ addNote }) {
     e.preventDefault();
     if (!note.subject || !note.description) return;
     addNote(note);
+    const text = `📝 Check out this note:\nSubject: ${note.subject}\nDescription: ${note.description}`;
+    const encodedText = encodeURIComponent(text);
+    const whatsappURL = `https://api.whatsapp.com/send?text=${encodedText}`;
+    window.open(whatsappURL, "_blank");
     setNote({ subject: "", description: "" });
   };
 
