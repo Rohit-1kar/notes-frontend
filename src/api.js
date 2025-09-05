@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8080", // Spring Boot backend
+  baseURL: "notes-back-production-6673.up.railway.app", // Spring Boot backend
 });
 
 export default api;
